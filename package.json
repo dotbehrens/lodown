@@ -1,6 +1,6 @@
 {
   "name": "lodown-dotbehrens",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "my own lodown library",
   "main": "index.js",
   "directories": {
