@@ -73,7 +73,7 @@ function typeOf(anyValue) {
 /**first : Returns the first items in the array. Number of items returns is equal to number. 
  * Returns empty array if array is not an array.
  * If number is not given or not a number 
- * @param  {Array} array: that first will be performed on
+ * @param  {anArray} array: that first will be performed on
  * @param  {Number}number: that represent the number of items returned starting at 0
  * 
  * @return {Array} returns a new array of the first element(s) in the given array
@@ -153,10 +153,10 @@ function indexOf(array, value) {
         }
 
     }
-    return -1
+    return -1;
 }
 
-module.exports.indexOf = indexOf
+module.exports.indexOf = indexOf;
 
 
 
@@ -170,17 +170,17 @@ module.exports.indexOf = indexOf
  function contains(array, value) {
 
      if (value === undefined) {
-         return false
+         return false;
      }
      else if (array.includes(value)) {
-         return true
+         return true;
      }
-     else return false
+     else return false;
 
 
 
  }
-module.exports.contains = contains
+module.exports.contains = contains;
 
 /** unique : takes an array and returns a new arrray with the duplicates removed.
  * @param {Array} array: to loop through to have non duplicate values pushed into new array
@@ -190,16 +190,16 @@ module.exports.contains = contains
 
 function unique(array) {
 
-    var newArray = []
+    var newArray = [];
     for (var i = 0; i < array.length; i++) {
         if (newArray.indexOf(array[i]) === -1) {
             newArray.push(array[i]);
         }
     }
-    return newArray
+    return newArray;
 }
 
-module.exports.unique = unique
+module.exports.unique = unique;
 
 
 /** filter: calls a function for each element in a given array.Function has three arguments ( element, index, array)
@@ -212,15 +212,15 @@ module.exports.unique = unique
  */
 
 function filter(array, aFunction){
-    var newArray = []
+    var newArray = [];
     for (var i = 0; i < array.length; i++) {
         if (aFunction(array[i], i, array) === true) {
             newArray.push(array[i]);
         }
     }
-    return newArray
+    return newArray;
 }
-module.exports.filter = filter
+module.exports.filter = filter;
 
 /**reject: Calls an function for each element in array with the arguments (element, index, array).
  * 
@@ -233,15 +233,15 @@ module.exports.filter = filter
  
 function reject( array, aFunction){
 
-    var newArray = []
+    var newArray = [];
     for (var i = 0; i < array.length; i++) {
         if (aFunction(array[i], i, array) === false) {
             newArray.push(array[i]);
         }
     }
-    return newArray
+    return newArray;
 }
-module.exports.reject = reject
+module.exports.reject = reject;
 
 /**partition: Returns an array that is made up of 2 sub arrays, one array for all the values that the given function returns true, 
  * another for all the values that the given function returns false.
@@ -259,20 +259,20 @@ function partition(array, action) {
     each(array, function(elements, i, array) {
         if (action(array[i], i, array) === true) {
             subArray1.push(array[i]);
-            return subArray1
+            return subArray1;
         }
         else if (action(array[i], i, array) === false) {
             subArray2.push(array[i]);
-            return subArray2
+            return subArray2;
 
         }
 
 
     });
-    newArray.push(subArray1, subArray2)
-    return newArray
+    newArray.push(subArray1, subArray2);
+    return newArray;
 }
-module.exports.partition = partition
+module.exports.partition = partition;
 /**map: 
 * Calls a funcion for each element in a collection. Returns the new values in an array.
 *   @param {Obeject or Array} collection: an object or array to be looped through and have a function performed on each element in the collection
@@ -282,14 +282,14 @@ module.exports.partition = partition
 */
 
 function map(collection, aFunction) {
-    var newArray = []
+    var newArray = [];
 
     each(collection, function(element, i, collection) {
-        newArray.push(aFunction(element, i, collection))
-    })
-    return newArray
+        newArray.push(aFunction(element, i, collection));
+    });
+    return newArray;
 }
-module.exports.map = map
+module.exports.map = map;
 
 /*pluck: Returns an array containing the value of <property> for every element in the array. 
 
@@ -301,10 +301,10 @@ module.exports.map = map
  
  function pluck(arrObj, property) {
 
-     var newArray = []
+     var newArray = [];
      map(arrObj, function(element) {
-         newArray.push(element[property])
-     })
+         newArray.push(element[property]);
+     });
      return newArray;
  }
  
@@ -316,28 +316,28 @@ module.exports.map = map
  * @return {Boolean} returns a true or false value
  */
 
-module.exports.pluck = pluck
+module.exports.pluck = pluck;
 function every(collection,aFunction){
 
     if (typeof aFunction !== 'function') {
         if (contains(collection, false)) {
-            return false
+            return false;
         }
         else {
-            return true
+            return true;
         }
     }
-    var answer = _.map(collection, function(element, i, collection) {
+    var answer = map(collection, function(element, i, collection) {
 
-        return aFunction(element, i, collection)
-    })
-    if (_.contains(answer, false)) {
-        return false
+        return aFunction(element, i, collection);
+    });
+    if (contains(answer, false)) {
+        return false;
     }
-    return true
+    return true;
 }
 
-module.exports.every = every
+module.exports.every = every;
 /* some: calls a function for every element of a collection.If at least one element in the collection
  * returns true it returns true. If all elements are false, returns false.
  *  @param {Array or Object} collection can be array or object that will be looked through to discover if at least one element returns trye
@@ -349,23 +349,23 @@ module.exports.every = every
 function some( collection, aFunction){
     if (typeof aFunction !== 'function') {
         if (contains(collection, true)) {
-            return true
+            return true;
         }
         else {
-            return false
+            return false;
         }
     }
-    var answer = _.map(collection, function(element, i, collection) {
+    var answer = map(collection, function(element, i, collection) {
 
-        return aFunction(element, i, collection)
-    })
-    if (_.contains(answer, true)) {
-        return true
+        return aFunction(element, i, collection);
+    });
+    if (contains(answer, true)) {
+        return true;
     }
-    return false
+    return false;
 }
 
-module.exports.some = some
+module.exports.some = some;
 
 /**reduce: Calls a function for every element in the array. Uses provided seed at start if iteration
  * then uses the result of the previous itteration as seed and continues untill out of array elements. 
@@ -380,19 +380,19 @@ module.exports.some = some
  function reduce(array,aFunction, seed){
  
 if( seed === undefined){
-    previousResult = array[0]
+    previousResult = array[0];
     for( var i = 1; i < array.length; i++){
       var previousResult = aFunction(previousResult, array[i], i)
-    }
+    };
 } else {
-    previousResult = seed
+    previousResult = seed;
     for ( var i = 0; i < array.length; i++){
-       var previousResult = aFunction(previousResult,array[i],i)
+    var previousResult = aFunction(previousResult,array[i],i);
     }
-} return previousResult
+} return previousResult;
 }
 
-module.exports.reduce = reduce
+module.exports.reduce = reduce;
 
 /** extend: takes the properties of a given object and coppies them into the first object given, works 
  *  on as many parameters as needed.
@@ -403,14 +403,14 @@ module.exports.reduce = reduce
 */
 
 function extend(object1,object2){
-    var args = Array.from(arguments)
+    var args = Array.from(arguments);
   for( var i=1; i < args.length; i++){
          for( var key in args[i]){
-        Object.assign(args[0],args[i])
+        Object.assign(args[0],args[i]);
   }
  
-    } return args[0]
+    } return args[0];
 }
 
-module.exports.extend = extend
+module.exports.extend = extend;
 
